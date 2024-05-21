@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorServiceImplTest {
+class CalculatorServiceImplParametrizedTest {
     CalculatorService calculatorService = new CalculatorServiceImpl();
 
 
@@ -28,7 +28,12 @@ class CalculatorServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForAddition")
     public void shouldReturnCorrectResultOfPlus(long num1, long num2) {
-        assertEquals(num1 + num2, calculatorService.plus(num1, num2));
+        //given
+        long expected = num1 + num2;
+        //when
+        long actual = calculatorService.plus(num1, num2);
+        //then
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> provideArgumentsForAddition() {
@@ -48,7 +53,12 @@ class CalculatorServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForSubtraction")
     public void shouldReturnCorrectResultOfMinus(long num1, long num2) {
-        assertEquals(num1 - num2, calculatorService.minus(num1, num2));
+        //given
+        long expected = num1 - num2;
+        //when
+        long actual = calculatorService.minus(num1, num2);
+        //then
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> provideArgumentsForSubtraction() {
@@ -68,7 +78,12 @@ class CalculatorServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForMultiplication")
     public void shouldReturnCorrectResultOfMultiply(long num1, long num2) {
-        assertEquals(num1 * num2, calculatorService.multiply(num1, num2));
+        //given
+        long expected = num1 * num2;
+        //when
+        long actual = calculatorService.multiply(num1, num2);
+        //then
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> provideArgumentsForMultiplication() {
@@ -88,7 +103,12 @@ class CalculatorServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForDivision")
     public void shouldReturnCorrectResultOfDivide(long num1, long num2) {
-        assertEquals((float) num1 / num2, calculatorService.divide(num1, num2));
+        //given
+        float expected = (float) num1 / num2;
+        //when
+        float actual = calculatorService.divide(num1, num2);
+        //then
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> provideArgumentsForDivision() {
