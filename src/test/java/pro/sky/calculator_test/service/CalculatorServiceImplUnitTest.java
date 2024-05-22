@@ -4,15 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pro.sky.calculator_test.exceptions.ZeroDividerException;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorServiceImplUnitTest {
     CalculatorService calculatorService = new CalculatorServiceImpl();
 
-    List<Integer[]> testData = Arrays.asList(
+/*    List<Integer[]> testData = Arrays.asList(
             new Integer[]{1, 2},
             new Integer[]{2, 1},
             new Integer[]{-1, 1},
@@ -20,7 +16,7 @@ public class CalculatorServiceImplUnitTest {
             new Integer[]{-1, -1},
             new Integer[]{0, 1},
             new Integer[]{1, 0}
-    );
+    );*/
 
     @Test
     void hello() {
@@ -34,43 +30,58 @@ public class CalculatorServiceImplUnitTest {
 
     @Test
     void plus() {
-        for (Integer[] data : testData) {
-            long expected = data[0] + data[1];
-            long actual = calculatorService.plus(data[0], data[1]);
-            assertEquals(expected, actual);
-        }
+        //given
+        long expected1 = 3;
+        long expected2 = 3;
+        //when
+        long actual1 = calculatorService.plus(1, 2);
+        long actual2 = calculatorService.plus(2, 1);
+        //then
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
     }
 
 
     @Test
     void minus() {
-        for (Integer[] data : testData) {
-            long expected = data[0] - data[1];
-            long actual = calculatorService.minus(data[0], data[1]);
-            assertEquals(expected, actual);
-        }
+        //given
+        long expected1 = -1;
+        long expected2 = 1;
+        //when
+        long actual1 = calculatorService.minus(1, 2);
+        long actual2 = calculatorService.minus(2, 1);
+        //then
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
     }
 
     @Test
     void multiply() {
-        for (Integer[] data : testData) {
-            long expected = (long) data[0] * data[1];
-            long actual = calculatorService.multiply(data[0], data[1]);
-            assertEquals(expected, actual);
-        }
+        //given
+        long expected1 = 2;
+        long expected2 = 2;
+        //when
+        long actual1 = calculatorService.multiply(1, 2);
+        long actual2 = calculatorService.multiply(2, 1);
+        //then
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
     }
 
     @Test
     void divide() {
-        for (Integer[] data : testData) {
-            if (data[1] == 0) {
-                assertThrows(ZeroDividerException.class, () -> calculatorService.divide(data[0], data[1]));
-            } else {
-                long expected = data[0] / data[1];
-                long actual = (long) calculatorService.divide(data[0], data[1]);
-                assertEquals(expected, actual);
-            }
-        }
+        //given
+        float expected1 = 0.5f;
+        float expected2 = 2;
+        //when
+        float actual1 = calculatorService.divide(1, 2);
+        float actual2 = calculatorService.divide(2, 1);
+
+        //then
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
+        Assertions.assertThrows(ZeroDividerException.class, () -> calculatorService.divide(1,0));
+
     }
 }
 
